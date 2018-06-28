@@ -29,7 +29,7 @@ class DBMysqlHelp:
     def connectDatabase(self):
         try:
             self.conn = pymysql.connect(self.host, self.user,
-            self.pwd, self.db, charset='utf8')
+                                        self.pwd, self.db, charset='utf8')
 
             self.cur = self.conn.cursor()
             return True
@@ -55,7 +55,7 @@ class DBMysqlHelp:
                 # 正常逻辑，执行sql，提交操作
                 self.cur.execute(sql, params)
                 self.conn.commit()
-                return  True;
+                return True
         except:
             self.close()
             return False
@@ -67,10 +67,9 @@ class DBMysqlHelp:
             info = self.cur.fetchall()
             self.cur.close()
             self.conn.close()
-            return info;
+            return info
         else:
-            return False;
-
+            return False
 
     # 新增数据
     def insert(self, sql):
